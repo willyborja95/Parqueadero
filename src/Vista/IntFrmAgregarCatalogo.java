@@ -2,14 +2,13 @@ package Vista;
 
 import BusinessLogic.BLCatalogo;
 import Clases.Catalogo;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class IntFrmAgregarCatalogo extends javax.swing.JInternalFrame {
 
     BLCatalogo objBLCatalogo = new BLCatalogo();
+    ArrayList<Catalogo> lstCatalogos = new ArrayList<Catalogo>();
     
     public IntFrmAgregarCatalogo() {
         initComponents();

@@ -81,9 +81,19 @@ public class FrmPrincipal extends javax.swing.JFrame {
         itemCatalogo.add(itemAgregarCatalogo);
 
         itemActualizarCatalogo.setText("Actualizar catálogo");
+        itemActualizarCatalogo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemActualizarCatalogoActionPerformed(evt);
+            }
+        });
         itemCatalogo.add(itemActualizarCatalogo);
 
         itemEliminarCatalogo.setText("Eliminar catálogo");
+        itemEliminarCatalogo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemEliminarCatalogoActionPerformed(evt);
+            }
+        });
         itemCatalogo.add(itemEliminarCatalogo);
 
         menuAdministracion.add(itemCatalogo);
@@ -111,10 +121,31 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void itemAgregarCatalogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAgregarCatalogoActionPerformed
         IntFrmAgregarCatalogo intFrmAgregarCatalogo = new IntFrmAgregarCatalogo();
         pantallaDinamica.add(intFrmAgregarCatalogo);
+        intFrmAgregarCatalogo.cargarLstCatalogos();
         intFrmAgregarCatalogo.setVisible(true);
         intFrmAgregarCatalogo.setIconifiable(true);
         intFrmAgregarCatalogo.setClosable(true);
     }//GEN-LAST:event_itemAgregarCatalogoActionPerformed
+
+    private void itemActualizarCatalogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemActualizarCatalogoActionPerformed
+        IntFrmModificarCatalogo intFrmModificarCatalogo = new IntFrmModificarCatalogo();
+        pantallaDinamica.add(intFrmModificarCatalogo);
+        intFrmModificarCatalogo.cargarLstCatalogos();
+        intFrmModificarCatalogo.limpiar();
+        intFrmModificarCatalogo.setVisible(true);
+        intFrmModificarCatalogo.setIconifiable(true);
+        intFrmModificarCatalogo.setClosable(true);
+    }//GEN-LAST:event_itemActualizarCatalogoActionPerformed
+
+    private void itemEliminarCatalogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEliminarCatalogoActionPerformed
+        IntFrmEliminarCatalogo intFrmEliminarCatalogo = new IntFrmEliminarCatalogo();
+        pantallaDinamica.add(intFrmEliminarCatalogo);
+        intFrmEliminarCatalogo.cargarLstCatalogos();
+        intFrmEliminarCatalogo.limpiar();
+        intFrmEliminarCatalogo.setVisible(true);
+        intFrmEliminarCatalogo.setIconifiable(true);
+        intFrmEliminarCatalogo.setClosable(true);
+    }//GEN-LAST:event_itemEliminarCatalogoActionPerformed
 
     /**
      * @param args the command line arguments

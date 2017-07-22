@@ -43,11 +43,17 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Actualizar cat&#xe1;logo"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemActualizarCatalogoActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="itemEliminarCatalogo">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Eliminar cat&#xe1;logo"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemEliminarCatalogoActionPerformed"/>
+                  </Events>
                 </MenuItem>
               </SubComponents>
             </Menu>

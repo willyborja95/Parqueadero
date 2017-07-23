@@ -9,12 +9,12 @@ import java.util.ArrayList;
 
 public class BLItem {
 
-    ItemDao objItemDao;
+    ItemDao objItemDao = new ItemDao();
+    Validar objValidar = new Validar();
     
     public int insertar(Item objItem) throws SQLException, ClassNotFoundException{
         int intIdCatalogo = objItem.getIntIdCatalogo();
         String strDescripcion = objItem.getStrDescripcion();
-        Validar objValidar = new Validar();
         ArrayList <String> lstColumnas = new ArrayList<String>();
         ArrayList <String> lstValores = new ArrayList<String>();
         lstColumnas.add("descripcion");
@@ -53,7 +53,14 @@ public class BLItem {
         int intId = objItem.getIntId();
         int intIdCatalogo = objItem.getIntIdCatalogo();
         String strDescripcion = objItem.getStrDescripcion();
-        return objItemDao.actualizar(intId, intIdCatalogo, strDescripcion);
+        ArrayList <String> lstColumnas = new ArrayList<String>();
+        ArrayList <String> lstValores = new ArrayList<String>();
+        lstColumnas.add("descripcion");
+        lstValores.add(strDescripcion);
+        if(objValidar.verificarExistencia("administracion", "item", lstColumnas, lstValores)==false){
+            return objItemDao.actualizar(intId, intIdCatalogo, strDescripcion);
+        }
+        return -1;
     }
     
     public int eliminar(int intId) throws SQLException, ClassNotFoundException{

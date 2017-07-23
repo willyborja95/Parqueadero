@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class IntFrmAgregarItem extends javax.swing.JInternalFrame {
+public class IntFrmModificarItem extends javax.swing.JInternalFrame {
 
     BLCatalogo objBLCatalogo = new BLCatalogo();
     BLItem objBLItem = new BLItem();
@@ -20,9 +20,8 @@ public class IntFrmAgregarItem extends javax.swing.JInternalFrame {
     DefaultTableModel mdlTblCatalogos;
     DefaultTableModel mdlTblItems;
     
-    public IntFrmAgregarItem() {
+    public IntFrmModificarItem() {
         initComponents();
-        tblItems.setRowSelectionAllowed(false);
         bloquearCamposCatalogo();
         bloquearCamposItem();
     }
@@ -45,8 +44,8 @@ public class IntFrmAgregarItem extends javax.swing.JInternalFrame {
         tblItems = new javax.swing.JTable();
         lblDescripcion = new javax.swing.JLabel();
         txtDescripcion = new javax.swing.JTextField();
-        btnAgregar = new javax.swing.JButton();
-        btnLimpiar = new javax.swing.JButton();
+        btnGuardarCambios = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
         lblBorde = new javax.swing.JLabel();
 
         pnlAgregarCatalogo.setBackground(new java.awt.Color(255, 255, 255));
@@ -142,21 +141,21 @@ public class IntFrmAgregarItem extends javax.swing.JInternalFrame {
         });
         pnlAgregarCatalogo.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 210, -1));
 
-        btnAgregar.setText("Agregar");
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardarCambios.setText("Guardar Cambios");
+        btnGuardarCambios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
+                btnGuardarCambiosActionPerformed(evt);
             }
         });
-        pnlAgregarCatalogo.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 150, 40));
+        pnlAgregarCatalogo.add(btnGuardarCambios, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 150, 40));
 
-        btnLimpiar.setText("Limpiar");
-        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimpiarActionPerformed(evt);
+                btnCancelarActionPerformed(evt);
             }
         });
-        pnlAgregarCatalogo.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 150, 40));
+        pnlAgregarCatalogo.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 150, 40));
 
         lblBorde.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 204), 3));
         pnlAgregarCatalogo.add(lblBorde, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 710, 430));
@@ -191,6 +190,7 @@ public class IntFrmAgregarItem extends javax.swing.JInternalFrame {
     
     public void limpiarItem() {
         txtDescripcion.setText("");
+        tblItems.clearSelection();
     }
 
     public void cargarLstCatalogos() {
@@ -248,29 +248,21 @@ public class IntFrmAgregarItem extends javax.swing.JInternalFrame {
         cmbEstado.setEnabled(false);
     }
     
-    public void desbloquearCamposCatalogo(){
-        txtCodigo.setEditable(true);
-        txtNombre.setEditable(true);
-        cmbEstado.setEnabled(true);
-    }
-    
     public void bloquearCamposItem(){
         txtDescripcion.setEditable(false);
-        btnAgregar.setEnabled(false);
-        btnLimpiar.setEnabled(false);
+        btnGuardarCambios.setEnabled(false);
+        btnCancelar.setEnabled(false);
     }
     
     
     public void desbloquearCamposItem(){
         txtDescripcion.setEditable(true);
-        btnAgregar.setEnabled(true);
-        btnLimpiar.setEnabled(true);
+        btnGuardarCambios.setEnabled(true);
+        btnCancelar.setEnabled(true);
     }
     // </editor-fold> 
 
     private void tblCatalogosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCatalogosMouseClicked
-        desbloquearCamposItem();
-        limpiarItem();
         cargarLstItems();
         txtCodigo.setText(lstCatalogos.get(tblCatalogos.getSelectedRow()).getStrCodigo());
         txtNombre.setText(lstCatalogos.get(tblCatalogos.getSelectedRow()).getStrNombre());
@@ -279,6 +271,8 @@ public class IntFrmAgregarItem extends javax.swing.JInternalFrame {
         } else {
             cmbEstado.setSelectedIndex(1);
         }
+        limpiarItem();
+        bloquearCamposItem();
     }//GEN-LAST:event_tblCatalogosMouseClicked
 
     private void txtCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoKeyTyped
@@ -294,7 +288,8 @@ public class IntFrmAgregarItem extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtNombreKeyTyped
 
     private void tblItemsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblItemsMouseClicked
-        // TODO add your handling code here:
+        txtDescripcion.setText(lstItems.get(tblItems.getSelectedRow()).getStrDescripcion());
+        desbloquearCamposItem();
     }//GEN-LAST:event_tblItemsMouseClicked
 
     private void txtDescripcionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescripcionKeyTyped
@@ -303,39 +298,41 @@ public class IntFrmAgregarItem extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_txtDescripcionKeyTyped
 
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+    private void btnGuardarCambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarCambiosActionPerformed
         if (verificarCamposCompletos()) {
             try {
                 String strDescripcion = txtDescripcion.getText().toUpperCase();
-                int intRespuesta = objBLItem.insertar(new Item(lstCatalogos.get(tblCatalogos.getSelectedRow()).getIntId(), strDescripcion));
-                
+                int intRespuesta = objBLItem.actualizar(new Item(lstItems.get(tblItems.getSelectedRow()).getIntId(), 
+                        lstItems.get(tblItems.getSelectedRow()).getIntIdCatalogo(), strDescripcion));
                 if(intRespuesta<1){
                     JOptionPane.showMessageDialog(null, "El nombre del ítem de catálogo proporcionado ya existe.\nPorfavor, "
                             + "ingrese uno nuevo.", "Nombre de ítem de catálogo repetido", JOptionPane.ERROR_MESSAGE);
                 }else{
                     limpiarItem();
                     cargarLstItems();
+                    bloquearCamposItem();
                 }
-            } catch (SQLException ex) {
-                Logger.getLogger(IntFrmAgregarItem.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(IntFrmAgregarItem.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "No ha sido posible actualizar la información del ítem catálogo.\n"
+                        + "Descripción del error:\n"+ex.getMessage(), "Error de actualización", JOptionPane.ERROR_MESSAGE);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Para agregar un nuevo item de catálogo, ingrese la descripción del ítem.", 
                     "Formulario Incompleto", JOptionPane.ERROR_MESSAGE);
         }
 
-    }//GEN-LAST:event_btnAgregarActionPerformed
+    }//GEN-LAST:event_btnGuardarCambiosActionPerformed
 
-    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         limpiarItem();
-    }//GEN-LAST:event_btnLimpiarActionPerformed
+        tblItems.clearSelection();
+        bloquearCamposItem();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnGuardarCambios;
     private javax.swing.JComboBox<String> cmbEstado;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

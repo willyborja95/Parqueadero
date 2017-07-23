@@ -41,4 +41,9 @@ public class Item {
         this.strDescripcion = strDescripcion;
     }
 
+    @Override
+    public String toString() {
+        return strDescripcion;
+    }
+
 }

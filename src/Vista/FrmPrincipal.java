@@ -112,6 +112,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         menuUsuarios.add(itemActualizarUsuario);
 
         itemEliminarUsuario.setText("Eliminar usuario");
+        itemEliminarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemEliminarUsuarioActionPerformed(evt);
+            }
+        });
         menuUsuarios.add(itemEliminarUsuario);
 
         menuCuentas.add(menuUsuarios);
@@ -328,6 +333,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
         intFrmEliminarRol.setIconifiable(true);
         intFrmEliminarRol.setClosable(true);
     }//GEN-LAST:event_itemEliminarRolActionPerformed
+
+    private void itemEliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEliminarUsuarioActionPerformed
+        IntFrmEliminarUsuario intFrmEliminarUsuario = new IntFrmEliminarUsuario();
+        pantallaDinamica.add(intFrmEliminarUsuario);
+        intFrmEliminarUsuario.setVisible(true);
+        intFrmEliminarUsuario.setIconifiable(true);
+        intFrmEliminarUsuario.setClosable(true);
+    }//GEN-LAST:event_itemEliminarUsuarioActionPerformed
 
     /**
      * @param args the command line arguments

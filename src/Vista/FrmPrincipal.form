@@ -81,20 +81,29 @@
                 <Property name="text" type="java.lang.String" value="Funcionalidades"/>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
+                <MenuItem class="javax.swing.JMenuItem" name="itemAgregarFuncionalidad">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Agregar funcionalidad"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemAgregarFuncionalidadActionPerformed"/>
+                  </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
+                <MenuItem class="javax.swing.JMenuItem" name="itemActualizarFuncionalidad">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Actualizar funcionalidad"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemActualizarFuncionalidadActionPerformed"/>
+                  </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
+                <MenuItem class="javax.swing.JMenuItem" name="itemEliminarFuncionalidad">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Eliminar funcionalidad"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemEliminarFuncionalidadActionPerformed"/>
+                  </Events>
                 </MenuItem>
               </SubComponents>
             </Menu>
@@ -105,15 +114,15 @@
                 <Property name="text" type="java.lang.String" value="Usuario/Rol"/>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem10">
+                <MenuItem class="javax.swing.JMenuItem" name="agregarAsignacionUsuariosRoles">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Agregar asignaci&#xf3;n usuario/rol"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem10ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="agregarAsignacionUsuariosRolesActionPerformed"/>
                   </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="itemEliminarAsignacionUsuarioRol">
+                <MenuItem class="javax.swing.JMenuItem" name="itemEliminarAsignacionUsuariosRoles">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Eliminar asignaci&#xf3;n usuario/rol"/>
                   </Properties>

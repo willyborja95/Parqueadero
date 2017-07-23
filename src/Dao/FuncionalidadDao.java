@@ -5,22 +5,22 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class RolDao {
+public class FuncionalidadDao {
 
     Conexion objConexion = new Conexion();
     
     public ResultSet consultar() throws ClassNotFoundException, SQLException
     {
         Statement st = objConexion.AbrirConexion("seguridad").createStatement();
-        String Sentencia = "SELECT * FROM rol";
+        String Sentencia = "SELECT * FROM funcionalidad";
         ResultSet rs = st.executeQuery(Sentencia);
         return rs;
     }
     
-    public ResultSet consultarPorId(int intIdBuscado) throws ClassNotFoundException, SQLException
+    public ResultSet consultarPorId(int intIdFuncionalidad) throws ClassNotFoundException, SQLException
     {
         Statement st = objConexion.AbrirConexion("seguridad").createStatement();
-        String Sentencia = "SELECT * FROM rol where id="+intIdBuscado;
+        String Sentencia = "SELECT * FROM funcionalidad WHERE id="+intIdFuncionalidad;
         ResultSet rs = st.executeQuery(Sentencia);
         return rs;
     }
@@ -29,7 +29,7 @@ public class RolDao {
         int intResultado=0;
         //Utilizando Statement
         Statement st = objConexion.AbrirConexion("seguridad").createStatement();
-        String Sentencia = "INSERT INTO rol (nombre, descripcion)  VALUES ( " 
+        String Sentencia = "INSERT INTO funcionalidad (nombre, descripcion)  VALUES ( " 
                 +"'" +strNombre +"'"  + ","
                 +"'" + strDescripcion+"')" ;
         intResultado = st.executeUpdate(Sentencia);
@@ -40,7 +40,7 @@ public class RolDao {
         int intResultado=0;
         //Utilizando Statement
         Statement st = objConexion.AbrirConexion("seguridad").createStatement();
-        String Sentencia = "UPDATE rol SET nombre=" 
+        String Sentencia = "UPDATE funcionalidad SET nombre=" 
                 +"'" +strNombre +"'"  + ", descripcion="
                 +"'" + strDescripcion +"' WHERE id="+intId;
         intResultado = st.executeUpdate(Sentencia);
@@ -51,9 +51,8 @@ public class RolDao {
          int intResultado=0;
         //Utilizando Statement
         Statement st = objConexion.AbrirConexion("seguridad").createStatement();
-        String Sentencia = "DELETE FROM rol WHERE id="+intId;
+        String Sentencia = "DELETE FROM funcionalidad WHERE id="+intId;
         intResultado = st.executeUpdate(Sentencia);
         return intResultado;
     }
-    
 }

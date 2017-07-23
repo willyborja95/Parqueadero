@@ -160,13 +160,13 @@ public class IntFrmAgregarCatalogo extends javax.swing.JInternalFrame {
     
     public void cargarTblCatalogo(){
         Object columnas[] = {"Nombre", "¿Se encuentra activo?"};
-                Object valores[][] = new Object[lstCatalogos.size()][columnas.length];
-                for (int i = 0; i < lstCatalogos.size(); i++) {
-                    valores[i][0] = lstCatalogos.get(i).getStrNombre();
-                    valores[i][1] = lstCatalogos.get(i).isBlnEstado();
-                }
-                mdlTblCatalogos = new DefaultTableModel(valores, columnas);
-                tblCatalogos.setModel(mdlTblCatalogos);
+        Object valores[][] = new Object[lstCatalogos.size()][columnas.length];
+        for (int i = 0; i < lstCatalogos.size(); i++) {
+            valores[i][0] = lstCatalogos.get(i).getStrNombre();
+            valores[i][1] = lstCatalogos.get(i).isBlnEstado();
+        }
+        mdlTblCatalogos = new DefaultTableModel(valores, columnas);
+        tblCatalogos.setModel(mdlTblCatalogos);
     }
     // </editor-fold> 
     

@@ -39,6 +39,18 @@ public class BLRol {
         return lstRoles;
     }
     
+    public ArrayList<Rol> consultarPorId(int intIdBuscado) throws ClassNotFoundException, SQLException{
+        ResultSet objResultados = objRolDao.consultarPorId(intIdBuscado);
+        ArrayList<Rol> lstRoles = new ArrayList<Rol>();
+        while(objResultados.next()){
+            int intId = objResultados.getInt("id");
+            String strNombre = objResultados.getString("nombre");
+            String strDescripcion = objResultados.getString("descripcion");
+            lstRoles.add(new Rol(intId, strNombre, strDescripcion));
+        }
+        return lstRoles;
+    }
+    
     public int actualizar(Rol objRol) throws SQLException, ClassNotFoundException{
         int intId = objRol.getIntId();
         String strNombre = objRol.getStrNombre();

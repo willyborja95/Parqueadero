@@ -23,13 +23,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
         itemActualizarUsuario = new javax.swing.JMenuItem();
         itemEliminarUsuario = new javax.swing.JMenuItem();
         menuFuncionalidades = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        itemAgregarFuncionalidad = new javax.swing.JMenuItem();
+        itemActualizarFuncionalidad = new javax.swing.JMenuItem();
+        itemEliminarFuncionalidad = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         itemAgregarAsignacionUsuarioRol = new javax.swing.JMenu();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        itemEliminarAsignacionUsuarioRol = new javax.swing.JMenuItem();
+        agregarAsignacionUsuariosRoles = new javax.swing.JMenuItem();
+        itemEliminarAsignacionUsuariosRoles = new javax.swing.JMenuItem();
         menuRolFuncionalidad = new javax.swing.JMenu();
         itemAgregarAsignacionRolFuncionalidad = new javax.swing.JMenuItem();
         itemEliminarAsignacionRolFuncionalidad = new javax.swing.JMenuItem();
@@ -123,30 +123,45 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         menuFuncionalidades.setText("Funcionalidades");
 
-        jMenuItem4.setText("Agregar funcionalidad");
-        menuFuncionalidades.add(jMenuItem4);
+        itemAgregarFuncionalidad.setText("Agregar funcionalidad");
+        itemAgregarFuncionalidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemAgregarFuncionalidadActionPerformed(evt);
+            }
+        });
+        menuFuncionalidades.add(itemAgregarFuncionalidad);
 
-        jMenuItem5.setText("Actualizar funcionalidad");
-        menuFuncionalidades.add(jMenuItem5);
+        itemActualizarFuncionalidad.setText("Actualizar funcionalidad");
+        itemActualizarFuncionalidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemActualizarFuncionalidadActionPerformed(evt);
+            }
+        });
+        menuFuncionalidades.add(itemActualizarFuncionalidad);
 
-        jMenuItem6.setText("Eliminar funcionalidad");
-        menuFuncionalidades.add(jMenuItem6);
+        itemEliminarFuncionalidad.setText("Eliminar funcionalidad");
+        itemEliminarFuncionalidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemEliminarFuncionalidadActionPerformed(evt);
+            }
+        });
+        menuFuncionalidades.add(itemEliminarFuncionalidad);
 
         menuCuentas.add(menuFuncionalidades);
         menuCuentas.add(jSeparator2);
 
         itemAgregarAsignacionUsuarioRol.setText("Usuario/Rol");
 
-        jMenuItem10.setText("Agregar asignación usuario/rol");
-        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+        agregarAsignacionUsuariosRoles.setText("Agregar asignación usuario/rol");
+        agregarAsignacionUsuariosRoles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem10ActionPerformed(evt);
+                agregarAsignacionUsuariosRolesActionPerformed(evt);
             }
         });
-        itemAgregarAsignacionUsuarioRol.add(jMenuItem10);
+        itemAgregarAsignacionUsuarioRol.add(agregarAsignacionUsuariosRoles);
 
-        itemEliminarAsignacionUsuarioRol.setText("Eliminar asignación usuario/rol");
-        itemAgregarAsignacionUsuarioRol.add(itemEliminarAsignacionUsuarioRol);
+        itemEliminarAsignacionUsuariosRoles.setText("Eliminar asignación usuario/rol");
+        itemAgregarAsignacionUsuarioRol.add(itemEliminarAsignacionUsuariosRoles);
 
         menuCuentas.add(itemAgregarAsignacionUsuarioRol);
 
@@ -287,9 +302,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
         intFrmEliminarItem.setClosable(true);
     }//GEN-LAST:event_itemEliminarItemActionPerformed
 
-    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
-        
-    }//GEN-LAST:event_jMenuItem10ActionPerformed
+    private void agregarAsignacionUsuariosRolesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarAsignacionUsuariosRolesActionPerformed
+        IntFrmAgregarUsuarioRol intFrmRolUsuario = new IntFrmAgregarUsuarioRol();
+        pantallaDinamica.add(intFrmRolUsuario);
+        intFrmRolUsuario.setVisible(true);
+        intFrmRolUsuario.setIconifiable(true);
+        intFrmRolUsuario.setClosable(true);
+    }//GEN-LAST:event_agregarAsignacionUsuariosRolesActionPerformed
 
     private void itemAgregarRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAgregarRolActionPerformed
         IntFrmAgregarRol intFrmRol = new IntFrmAgregarRol();
@@ -342,6 +361,30 @@ public class FrmPrincipal extends javax.swing.JFrame {
         intFrmEliminarUsuario.setClosable(true);
     }//GEN-LAST:event_itemEliminarUsuarioActionPerformed
 
+    private void itemAgregarFuncionalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAgregarFuncionalidadActionPerformed
+        IntFrmAgregarFuncionalidad intFrmAgregarFuncionalidad = new IntFrmAgregarFuncionalidad();
+        pantallaDinamica.add(intFrmAgregarFuncionalidad);
+        intFrmAgregarFuncionalidad.setVisible(true);
+        intFrmAgregarFuncionalidad.setIconifiable(true);
+        intFrmAgregarFuncionalidad.setClosable(true);
+    }//GEN-LAST:event_itemAgregarFuncionalidadActionPerformed
+
+    private void itemActualizarFuncionalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemActualizarFuncionalidadActionPerformed
+        IntFrmModificarFuncionalidad intFrmModificarFuncionalidad = new IntFrmModificarFuncionalidad();
+        pantallaDinamica.add(intFrmModificarFuncionalidad);
+        intFrmModificarFuncionalidad.setVisible(true);
+        intFrmModificarFuncionalidad.setIconifiable(true);
+        intFrmModificarFuncionalidad.setClosable(true);
+    }//GEN-LAST:event_itemActualizarFuncionalidadActionPerformed
+
+    private void itemEliminarFuncionalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEliminarFuncionalidadActionPerformed
+        IntFrmEliminarFuncionalidad intFrmEliminarFuncionalidad = new IntFrmEliminarFuncionalidad();
+        pantallaDinamica.add(intFrmEliminarFuncionalidad);
+        intFrmEliminarFuncionalidad.setVisible(true);
+        intFrmEliminarFuncionalidad.setIconifiable(true);
+        intFrmEliminarFuncionalidad.setClosable(true);
+    }//GEN-LAST:event_itemEliminarFuncionalidadActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -378,30 +421,30 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem agregarAsignacionUsuariosRoles;
     private javax.swing.JMenuItem itemActualizarCatalogo;
+    private javax.swing.JMenuItem itemActualizarFuncionalidad;
     private javax.swing.JMenuItem itemActualizarItem;
     private javax.swing.JMenuItem itemActualizarRol;
     private javax.swing.JMenuItem itemActualizarUsuario;
     private javax.swing.JMenuItem itemAgregarAsignacionRolFuncionalidad;
     private javax.swing.JMenu itemAgregarAsignacionUsuarioRol;
     private javax.swing.JMenuItem itemAgregarCatalogo;
+    private javax.swing.JMenuItem itemAgregarFuncionalidad;
     private javax.swing.JMenuItem itemAgregarItem;
     private javax.swing.JMenuItem itemAgregarRol;
     private javax.swing.JMenuItem itemAgregarUsuario;
     private javax.swing.JMenu itemCatalogo;
     private javax.swing.JMenuItem itemEliminarAsignacionRolFuncionalidad;
-    private javax.swing.JMenuItem itemEliminarAsignacionUsuarioRol;
+    private javax.swing.JMenuItem itemEliminarAsignacionUsuariosRoles;
     private javax.swing.JMenuItem itemEliminarCatalogo;
+    private javax.swing.JMenuItem itemEliminarFuncionalidad;
     private javax.swing.JMenuItem itemEliminarItem;
     private javax.swing.JMenuItem itemEliminarRol;
     private javax.swing.JMenuItem itemEliminarUsuario;
     private javax.swing.JMenu itemItems;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JMenu menuAdministracion;
